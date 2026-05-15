@@ -6,21 +6,401 @@
 
 <title>MixMart Fashion</title>
 
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
 
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
+body{
+font-family:'Montserrat',sans-serif;
+background:#0d0d0d;
+color:white;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(18px);
+background:rgba(0,0,0,0.35);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+font-size:24px;
+font-weight:800;
+letter-spacing:3px;
+}
+
+.nav-left{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+.nav-left a{
+color:white;
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+}
+
+.icons{
+display:flex;
+gap:16px;
+font-size:20px;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.5);
+}
+
+.hero::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to top, #0d0d0d 5%, transparent);
+}
+
+.hero-content{
+position:relative;
+z-index:5;
+max-width:800px;
+padding:20px;
+}
+
+.hero-content h1{
+font-size:52px;
+font-weight:800;
+line-height:1.1;
+margin-bottom:20px;
+text-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero-content p{
+font-size:18px;
+color:#d1d1d1;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.hero-buttons button{
+padding:14px 28px;
+border:none;
+border-radius:40px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.primary-btn{
+background:white;
+color:black;
+}
+
+.secondary-btn{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+color:white;
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.hero-buttons button:hover{
+transform:translateY(-3px) scale(1.03);
+}
+
+/* CATEGORY */
+
+.categories{
+padding:90px 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:20px;
+}
+
+.category-card{
+position:relative;
+height:240px;
+border-radius:28px;
+overflow:hidden;
+cursor:pointer;
+transform-style:preserve-3d;
+transition:0.4s;
+box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+
+.category-card:hover{
+transform:rotateY(8deg) rotateX(5deg) translateY(-8px);
+}
+
+.category-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.4s;
+}
+
+.category-card:hover img{
+transform:scale(1.08);
+}
+
+.category-card span{
+position:absolute;
+bottom:18px;
+left:18px;
+font-size:20px;
+font-weight:700;
+z-index:2;
+text-shadow:0 10px 20px rgba(0,0,0,0.6);
+}
+
+/* SECTION TITLE */
+
+.section-title{
+padding:0 20px;
+font-size:34px;
+font-weight:800;
+margin-bottom:30px;
+}
+
+/* PRODUCTS */
+
+.product-row{
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding:0 20px 70px;
+scroll-snap-type:x mandatory;
+}
+
+.product-row::-webkit-scrollbar{
+display:none;
+}
+
+.product-card{
+min-width:280px;
+background:linear-gradient(145deg,#171717,#0c0c0c);
+border-radius:30px;
+overflow:hidden;
+position:relative;
+scroll-snap-align:start;
+box-shadow:0 25px 50px rgba(0,0,0,0.5);
+transition:0.4s;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+}
+
+.product-card img{
+width:100%;
+height:340px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.product-card:hover img{
+transform:scale(1.05);
+}
+
+.product-info{
+padding:20px;
+}
+
+.product-info h3{
+font-size:18px;
+margin-bottom:8px;
+}
+
+.product-info p{
+color:#cfcfcf;
+margin-bottom:14px;
+}
+
+.product-info button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:16px;
+background:white;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+}
+
+.product-info button:hover{
+transform:scale(1.03);
+}
+
+/* EDITORIAL */
+
+.editorial{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+padding:20px;
+align-items:center;
+}
+
+.editorial-image{
+overflow:hidden;
+border-radius:30px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.editorial-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.editorial-image:hover img{
+transform:scale(1.06);
+}
+
+.editorial-text h2{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.editorial-text p{
+color:#cfcfcf;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.editorial-text button{
+padding:14px 28px;
+border:none;
+border-radius:40px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* SOCIAL */
+
+.social-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:18px;
+padding:20px 20px 100px;
+}
+
+.social-grid img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:24px;
+transition:0.4s;
+cursor:pointer;
+box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+.social-grid img:hover{
+transform:translateY(-8px) scale(1.03);
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 20px;
+background:#090909;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:30px;
+}
+
+footer h4{
+margin-bottom:18px;
+}
+
+footer a{
+display:block;
+margin-bottom:10px;
+text-decoration:none;
+color:#bdbdbd;
+font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:38px;
+}
+
+.editorial{
+grid-template-columns:1fr;
+}
+
+.product-card{
+min-width:75%;
+}
+
+header{
+padding:16px;
+}
+
+.logo{
+font-size:20px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
 
-<div class="menu-btn" onclick="openMenu()">
-☰
+<div class="nav-left">
+<a href="#">SHOP</a>
+<a href="#">NEW</a>
+<a href="#">SALE</a>
 </div>
 
 <div class="logo">
@@ -28,64 +408,40 @@ MIXMART
 </div>
 
 <div class="icons">
-
-<a href="cart.html">🛒</a>
-
+🛒
 </div>
 
 </header>
-
-<!-- SIDE MENU -->
-
-<div class="side-menu" id="sideMenu">
-
-<div class="close-btn" onclick="closeMenu()">
-✕
-</div>
-
-<a href="shop.html">Shop</a>
-<a href="#">New In</a>
-<a href="#">Best Sellers</a>
-<a href="#">Women</a>
-<a href="#">Men</a>
-<a href="#">Unisex</a>
-<a href="#">Boots</a>
-<a href="#">Heels</a>
-<a href="#">Sandals</a>
-<a href="#">Streetwear</a>
-<a href="#">Caps</a>
-<a href="#">Sale</a>
-<a href="#">Reviews</a>
-<a href="#">About Us</a>
-<a href="#">Contact</a>
-
-</div>
 
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-slide active">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
-</div>
-
-<div class="hero-slide">
-<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop">
-</div>
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-model-walking-in-the-city-1560923146434?download=1080p" type="video/mp4">
+</video>
 
 <div class="hero-content">
 
-<h1>Luxury Footwear For Everyday Style</h1>
+<h1>
+FASHION WITH DEPTH
+</h1>
 
 <p>
-Minimal. Premium. Fashion-forward.
+Luxury streetwear, premium footwear and modern fashion pieces designed to stand out.
 </p>
 
-<a href="shop.html">
-<button>
-Shop New Arrivals
+<div class="hero-buttons">
+
+<button class="primary-btn">
+Shop Men
 </button>
-</a>
+
+<button class="secondary-btn">
+Shop Women
+</button>
+
+</div>
 
 </div>
 
@@ -96,95 +452,158 @@ Shop New Arrivals
 <section class="categories">
 
 <div class="category-card">
-<img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop">
-<span>Heels</span>
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop">
+<span>Menswear</span>
 </div>
 
 <div class="category-card">
-<img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=800&auto=format&fit=crop">
-<span>Boots</span>
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
+<span>Womenswear</span>
 </div>
 
 <div class="category-card">
-<img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=800&auto=format&fit=crop">
-<span>Sandals</span>
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
+<span>Unisex</span>
 </div>
 
 <div class="category-card">
-<img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=800&auto=format&fit=crop">
-<span>Flats</span>
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
+<span>Gowns</span>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop">
+<span>Streetwear</span>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop">
+<span>Accessories</span>
 </div>
 
 </section>
 
 <!-- PRODUCTS -->
 
-<section class="products-section">
-
-<h2>
-Featured Products
+<h2 class="section-title">
+New Drops
 </h2>
 
-<div class="products" id="products">
+<div class="product-row">
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-info">
+<h3>Urban Runner</h3>
+<p>$89</p>
+<button>Add To Cart</button>
+</div>
+
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-info">
+<h3>Street Classic</h3>
+<p>$110</p>
+<button>Add To Cart</button>
+</div>
+
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-info">
+<h3>Minimal Drop</h3>
+<p>$74</p>
+<button>Add To Cart</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- EDITORIAL -->
+
+<section class="editorial">
+
+<div class="editorial-image">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="editorial-text">
+
+<h2>
+Built For Modern Fashion
+</h2>
+
+<p>
+MixMart blends luxury fashion aesthetics with everyday streetwear culture. Designed for confident personalities and bold lifestyles.
+</p>
+
+<button>
+Explore Lookbook
+</button>
 
 </div>
 
 </section>
 
-<!-- BRAND STORY -->
+<!-- SOCIAL -->
 
-<section class="brand-story">
+<h2 class="section-title">
+Styled By The Community
+</h2>
 
-<div class="story-text">
+<div class="social-grid">
 
-<div class="story-item">
-✨ Premium Quality
-</div>
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
 
-<div class="story-item">
-🚚 Fast Worldwide Shipping
-</div>
+<img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop">
 
-<div class="story-item">
-💳 Secure Checkout
-</div>
+<img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=1200&auto=format&fit=crop">
 
-</div>
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop">
 
-<div class="story-image">
+<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop">
 
-<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
 
 </div>
 
-</section>
+<footer>
 
-<!-- SOCIAL PROOF -->
-
-<section class="social-proof">
-
-<h2>Styled By Our Customers</h2>
-
-<div class="proof-grid">
-
-<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=800&auto=format&fit=crop">
-
+<div>
+<h4>Shop</h4>
+<a href="#">Men</a>
+<a href="#">Women</a>
+<a href="#">Streetwear</a>
+<a href="#">Accessories</a>
 </div>
 
-</section>
+<div>
+<h4>Company</h4>
+<a href="#">About Us</a>
+<a href="#">Contact</a>
+<a href="#">Careers</a>
+</div>
 
-<script src="products.js"></script>
-<script src="script.js"></script>
+<div>
+<h4>Help</h4>
+<a href="#">Shipping</a>
+<a href="#">Returns</a>
+<a href="#">FAQ</a>
+</div>
+
+<div>
+<h4>Newsletter</h4>
+<a href="#">Join for updates & drops</a>
+</div>
+
+</footer>
 
 </body>
 </html>

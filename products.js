@@ -1,4 +1,4 @@
-const PRINTFUL_API = "2n1KBbICdchx3piD4WuYsu9uVgRlY1dNnUOuKH7j";
+const PRINTFUL_API = "eIvy4MfNJLnV0XBOqzrC97PvTLNEhKkRFfM0l5lH";
 
 async function loadProducts(){
 

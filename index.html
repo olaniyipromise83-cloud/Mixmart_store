@@ -50,26 +50,7 @@ object-fit:cover;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-.nav-left{
-display:flex;
-gap:18px;
-align-items:center;
-}
-
-.nav-left a{
-color:white;
-text-decoration:none;
-font-size:14px;
-font-weight:500;
-}
-
-.icons{
-display:flex;
-gap:16px;
-font-size:20px;
-}
-
-/* HERO */
+/* HERO (RESTORED 3D FEEL) */
 
 .hero{
 height:100vh;
@@ -89,6 +70,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 filter:brightness(0.5);
+transform:scale(1.05);
 }
 
 .hero::after{
@@ -96,7 +78,7 @@ content:'';
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(to top,#0d0d0d 5%,transparent);
+background:radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 60%);
 }
 
 .hero-content{
@@ -104,6 +86,13 @@ position:relative;
 z-index:5;
 max-width:800px;
 padding:20px;
+animation:floatHero 6s ease-in-out infinite;
+}
+
+@keyframes floatHero{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0px);}
 }
 
 .hero-content h1{
@@ -314,29 +303,18 @@ height:55px;
 <section class="hero">
 
 <video autoplay muted loop playsinline>
-<source src="https://cdn.coverr.co/videos/coverr-model-walking-in-the-city-1560923146434?download=1080p" type="video/mp4">
+<source src="https://cdn.coverr.co/videos/coverr-model-walking-in-the-city-1560923146434?download=1080p">
 </video>
 
 <div class="hero-content">
 
-<h1>
-FASHION WITH DEPTH
-</h1>
+<h1>FASHION WITH DEPTH</h1>
 
-<p>
-Luxury streetwear, premium footwear and modern fashion pieces designed to stand out.
-</p>
+<p>Luxury streetwear, premium footwear and modern fashion pieces designed to stand out.</p>
 
 <div class="hero-buttons">
-
-<button class="primary-btn">
-Shop Men
-</button>
-
-<button class="secondary-btn">
-Shop Women
-</button>
-
+<button class="primary-btn">Shop Men</button>
+<button class="secondary-btn">Shop Women</button>
 </div>
 
 </div>
@@ -346,44 +324,17 @@ Shop Women
 <!-- CATEGORIES -->
 
 <section class="categories">
-
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop">
-<span>Menswear</span>
-</div>
-
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
-<span>Womenswear</span>
-</div>
-
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
-<span>Unisex</span>
-</div>
-
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
-<span>Gowns</span>
-</div>
-
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop">
-<span>Streetwear</span>
-</div>
-
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop">
-<span>Accessories</span>
-</div>
-
+<div class="category-card"><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop"><span>Menswear</span></div>
+<div class="category-card"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop"><span>Womenswear</span></div>
+<div class="category-card"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop"><span>Unisex</span></div>
+<div class="category-card"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop"><span>Gowns</span></div>
+<div class="category-card"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop"><span>Streetwear</span></div>
+<div class="category-card"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop"><span>Accessories</span></div>
 </section>
 
 <!-- PRODUCTS -->
 
-<h2 class="section-title">
-New Drops
-</h2>
+<h2 class="section-title">New Drops</h2>
 
 <div id="products">
 <p style="padding:20px;">Loading products...</p>
@@ -420,74 +371,4 @@ try{
 
 const response = await fetch("/api/products");
 
-const data = await response.json();
-
-const productsContainer = document.getElementById("products");
-
-productsContainer.innerHTML = "";
-
-const products = data.result || [];
-
-if(products.length === 0){
-
-productsContainer.innerHTML = "<p>No products found</p>";
-
-return;
-
-}
-
-products.forEach(product=>{
-
-const image = product.thumbnail_url || "";
-
-const name = product.name || "Fashion Product";
-
-const price = product.retail_price || "0";
-
-productsContainer.innerHTML += `
-
-<div class="product-card">
-
-<img src="${image}">
-
-<div class="product-info">
-
-<h3>${name}</h3>
-
-<p>$${price}</p>
-
-<button onclick="addToCart('${name}')">
-Add To Cart
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}catch(error){
-
-console.log(error);
-
-document.getElementById("products").innerHTML =
-"<p style='padding:20px;'>Failed to load products</p>";
-
-}
-
-}
-
-function addToCart(product){
-
-alert(product + " added to cart");
-
-}
-
-loadProducts();
-
-</script>
-
-</body>
-</html>
+const data = await response

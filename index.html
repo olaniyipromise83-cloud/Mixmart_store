@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -41,10 +42,12 @@ z-index:999;
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.logo{
-font-size:24px;
-font-weight:800;
-letter-spacing:3px;
+.logo img{
+width:70px;
+height:70px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 .nav-left{
@@ -93,7 +96,7 @@ content:'';
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(to top, #0d0d0d 5%, transparent);
+background:linear-gradient(to top,#0d0d0d 5%,transparent);
 }
 
 .hero-content{
@@ -108,7 +111,6 @@ font-size:52px;
 font-weight:800;
 line-height:1.1;
 margin-bottom:20px;
-text-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
 .hero-content p{
@@ -146,10 +148,6 @@ color:white;
 border:1px solid rgba(255,255,255,0.2);
 }
 
-.hero-buttons button:hover{
-transform:translateY(-3px) scale(1.03);
-}
-
 /* CATEGORY */
 
 .categories{
@@ -165,13 +163,12 @@ height:240px;
 border-radius:28px;
 overflow:hidden;
 cursor:pointer;
-transform-style:preserve-3d;
 transition:0.4s;
 box-shadow:0 20px 50px rgba(0,0,0,0.4);
 }
 
 .category-card:hover{
-transform:rotateY(8deg) rotateX(5deg) translateY(-8px);
+transform:translateY(-8px);
 }
 
 .category-card img{
@@ -191,11 +188,9 @@ bottom:18px;
 left:18px;
 font-size:20px;
 font-weight:700;
-z-index:2;
-text-shadow:0 10px 20px rgba(0,0,0,0.6);
 }
 
-/* SECTION TITLE */
+/* TITLES */
 
 .section-title{
 padding:0 20px;
@@ -206,42 +201,29 @@ margin-bottom:30px;
 
 /* PRODUCTS */
 
-.product-row{
+#products{
 display:flex;
 overflow-x:auto;
 gap:20px;
 padding:0 20px 70px;
-scroll-snap-type:x mandatory;
 }
 
-.product-row::-webkit-scrollbar{
+#products::-webkit-scrollbar{
 display:none;
 }
 
 .product-card{
 min-width:280px;
-background:linear-gradient(145deg,#171717,#0c0c0c);
+background:#171717;
 border-radius:30px;
 overflow:hidden;
-position:relative;
-scroll-snap-align:start;
 box-shadow:0 25px 50px rgba(0,0,0,0.5);
-transition:0.4s;
-}
-
-.product-card:hover{
-transform:translateY(-8px);
 }
 
 .product-card img{
 width:100%;
 height:340px;
 object-fit:cover;
-transition:0.4s;
-}
-
-.product-card:hover img{
-transform:scale(1.05);
 }
 
 .product-info{
@@ -254,8 +236,8 @@ margin-bottom:8px;
 }
 
 .product-info p{
-color:#cfcfcf;
-margin-bottom:14px;
+margin-bottom:15px;
+color:#d0d0d0;
 }
 
 .product-info button{
@@ -263,83 +245,8 @@ width:100%;
 padding:14px;
 border:none;
 border-radius:16px;
-background:white;
 font-weight:700;
 cursor:pointer;
-transition:0.3s;
-}
-
-.product-info button:hover{
-transform:scale(1.03);
-}
-
-/* EDITORIAL */
-
-.editorial{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
-padding:20px;
-align-items:center;
-}
-
-.editorial-image{
-overflow:hidden;
-border-radius:30px;
-box-shadow:0 20px 50px rgba(0,0,0,0.5);
-}
-
-.editorial-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:0.5s;
-}
-
-.editorial-image:hover img{
-transform:scale(1.06);
-}
-
-.editorial-text h2{
-font-size:42px;
-margin-bottom:20px;
-}
-
-.editorial-text p{
-color:#cfcfcf;
-line-height:1.8;
-margin-bottom:25px;
-}
-
-.editorial-text button{
-padding:14px 28px;
-border:none;
-border-radius:40px;
-font-weight:700;
-cursor:pointer;
-}
-
-/* SOCIAL */
-
-.social-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:18px;
-padding:20px 20px 100px;
-}
-
-.social-grid img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:24px;
-transition:0.4s;
-cursor:pointer;
-box-shadow:0 15px 35px rgba(0,0,0,0.4);
-}
-
-.social-grid img:hover{
-transform:translateY(-8px) scale(1.03);
 }
 
 /* FOOTER */
@@ -352,16 +259,11 @@ grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:30px;
 }
 
-footer h4{
-margin-bottom:18px;
-}
-
 footer a{
 display:block;
 margin-bottom:10px;
-text-decoration:none;
 color:#bdbdbd;
-font-size:14px;
+text-decoration:none;
 }
 
 /* MOBILE */
@@ -372,25 +274,19 @@ font-size:14px;
 font-size:38px;
 }
 
-.editorial{
-grid-template-columns:1fr;
-}
-
 .product-card{
 min-width:75%;
 }
 
-header{
-padding:16px;
-}
-
-.logo{
-font-size:20px;
+.logo img{
+width:55px;
+height:55px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -404,7 +300,7 @@ font-size:20px;
 </div>
 
 <div class="logo">
-MIXMART
+<img src="logo.jpg">
 </div>
 
 <div class="icons">
@@ -489,89 +385,8 @@ Shop Women
 New Drops
 </h2>
 
-<div class="product-row">
-
-<div class="product-card">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
-
-<div class="product-info">
-<h3>Urban Runner</h3>
-<p>$89</p>
-<button>Add To Cart</button>
-</div>
-
-</div>
-
-<div class="product-card">
-<img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=1200&auto=format&fit=crop">
-
-<div class="product-info">
-<h3>Street Classic</h3>
-<p>$110</p>
-<button>Add To Cart</button>
-</div>
-
-</div>
-
-<div class="product-card">
-<img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=1200&auto=format&fit=crop">
-
-<div class="product-info">
-<h3>Minimal Drop</h3>
-<p>$74</p>
-<button>Add To Cart</button>
-</div>
-
-</div>
-
-</div>
-
-<!-- EDITORIAL -->
-
-<section class="editorial">
-
-<div class="editorial-image">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
-</div>
-
-<div class="editorial-text">
-
-<h2>
-Built For Modern Fashion
-</h2>
-
-<p>
-MixMart blends luxury fashion aesthetics with everyday streetwear culture. Designed for confident personalities and bold lifestyles.
-</p>
-
-<button>
-Explore Lookbook
-</button>
-
-</div>
-
-</section>
-
-<!-- SOCIAL -->
-
-<h2 class="section-title">
-Styled By The Community
-</h2>
-
-<div class="social-grid">
-
-<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
-
+<div id="products">
+<p style="padding:20px;">Loading products...</p>
 </div>
 
 <footer>
@@ -581,29 +396,98 @@ Styled By The Community
 <a href="#">Men</a>
 <a href="#">Women</a>
 <a href="#">Streetwear</a>
-<a href="#">Accessories</a>
 </div>
 
 <div>
 <h4>Company</h4>
-<a href="#">About Us</a>
+<a href="#">About</a>
 <a href="#">Contact</a>
-<a href="#">Careers</a>
 </div>
 
 <div>
 <h4>Help</h4>
 <a href="#">Shipping</a>
 <a href="#">Returns</a>
-<a href="#">FAQ</a>
-</div>
-
-<div>
-<h4>Newsletter</h4>
-<a href="#">Join for updates & drops</a>
 </div>
 
 </footer>
-<script src="products.js"></script>
+
+<script>
+
+async function loadProducts(){
+
+try{
+
+const response = await fetch("/api/products");
+
+const data = await response.json();
+
+const productsContainer = document.getElementById("products");
+
+productsContainer.innerHTML = "";
+
+const products = data.result || [];
+
+if(products.length === 0){
+
+productsContainer.innerHTML = "<p>No products found</p>";
+
+return;
+
+}
+
+products.forEach(product=>{
+
+const image = product.thumbnail_url || "";
+
+const name = product.name || "Fashion Product";
+
+const price = product.retail_price || "0";
+
+productsContainer.innerHTML += `
+
+<div class="product-card">
+
+<img src="${image}">
+
+<div class="product-info">
+
+<h3>${name}</h3>
+
+<p>$${price}</p>
+
+<button onclick="addToCart('${name}')">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}catch(error){
+
+console.log(error);
+
+document.getElementById("products").innerHTML =
+"<p style='padding:20px;'>Failed to load products</p>";
+
+}
+
+}
+
+function addToCart(product){
+
+alert(product + " added to cart");
+
+}
+
+loadProducts();
+
+</script>
+
 </body>
 </html>

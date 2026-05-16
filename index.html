@@ -1,414 +1,489 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  <meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>MixMart Fashion</title>  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  <style>  
-  
-*{  
-margin:0;  
-padding:0;  
-box-sizing:border-box;  
-scroll-behavior:smooth;  
-}  
-  
-body{  
-font-family:'Montserrat',sans-serif;  
-background:#0d0d0d;  
-color:white;  
-overflow-x:hidden;  
-}  
-  
-/* HEADER */  
-  
-header{  
-position:fixed;  
-top:0;  
-left:0;  
-width:100%;  
-padding:18px 20px;  
-display:flex;  
-justify-content:space-between;  
-align-items:center;  
-backdrop-filter:blur(18px);  
-background:rgba(0,0,0,0.35);  
-z-index:999;  
-border-bottom:1px solid rgba(255,255,255,0.08);  
-}  
-  
-.logo img{  
-width:70px;  
-height:70px;  
-border-radius:50%;  
-object-fit:cover;  
-box-shadow:0 10px 25px rgba(0,0,0,0.5);  
-}  
-  
-.nav-left{  
-display:flex;  
-gap:18px;  
-align-items:center;  
-}  
-  
-.nav-left a{  
-color:white;  
-text-decoration:none;  
-font-size:14px;  
-font-weight:500;  
-}  
-  
-.icons{  
-display:flex;  
-gap:16px;  
-font-size:20px;  
-}  
-  
-/* HERO */  
-  
-.hero{  
-height:100vh;  
-position:relative;  
-overflow:hidden;  
-display:flex;  
-align-items:center;  
-justify-content:center;  
-text-align:center;  
-}  
-  
-.hero video{  
-position:absolute;  
-top:0;  
-left:0;  
-width:100%;  
-height:100%;  
-object-fit:cover;  
-filter:brightness(0.5);  
-}  
-  
-.hero::after{  
-content:'';  
-position:absolute;  
-width:100%;  
-height:100%;  
-background:linear-gradient(to top,#0d0d0d 5%,transparent);  
-}  
-  
-.hero-content{  
-position:relative;  
-z-index:5;  
-max-width:800px;  
-padding:20px;  
-}  
-  
-.hero-content h1{  
-font-size:52px;  
-font-weight:800;  
-line-height:1.1;  
-margin-bottom:20px;  
-}  
-  
-.hero-content p{  
-font-size:18px;  
-color:#d1d1d1;  
-margin-bottom:30px;  
-}  
-  
-.hero-buttons{  
-display:flex;  
-justify-content:center;  
-gap:15px;  
-flex-wrap:wrap;  
-}  
-  
-.hero-buttons button{  
-padding:14px 28px;  
-border:none;  
-border-radius:40px;  
-font-size:15px;  
-font-weight:600;  
-cursor:pointer;  
-transition:0.3s;  
-}  
-  
-.primary-btn{  
-background:white;  
-color:black;  
-}  
-  
-.secondary-btn{  
-background:rgba(255,255,255,0.1);  
-backdrop-filter:blur(10px);  
-color:white;  
-border:1px solid rgba(255,255,255,0.2);  
-}  
-  
-/* CATEGORY */  
-  
-.categories{  
-padding:90px 20px;  
-display:grid;  
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));  
-gap:20px;  
-}  
-  
-.category-card{  
-position:relative;  
-height:240px;  
-border-radius:28px;  
-overflow:hidden;  
-cursor:pointer;  
-transition:0.4s;  
-box-shadow:0 20px 50px rgba(0,0,0,0.4);  
-}  
-  
-.category-card:hover{  
-transform:translateY(-8px);  
-}  
-  
-.category-card img{  
-width:100%;  
-height:100%;  
-object-fit:cover;  
-transition:0.4s;  
-}  
-  
-.category-card:hover img{  
-transform:scale(1.08);  
-}  
-  
-.category-card span{  
-position:absolute;  
-bottom:18px;  
-left:18px;  
-font-size:20px;  
-font-weight:700;  
-}  
-  
-/* TITLES */  
-  
-.section-title{  
-padding:0 20px;  
-font-size:34px;  
-font-weight:800;  
-margin-bottom:30px;  
-}  
-  
-/* PRODUCTS */  
-  
-#products{  
-display:flex;  
-overflow-x:auto;  
-gap:20px;  
-padding:0 20px 70px;  
-}  
-  
-#products::-webkit-scrollbar{  
-display:none;  
-}  
-  
-.product-card{  
-min-width:280px;  
-background:#171717;  
-border-radius:30px;  
-overflow:hidden;  
-box-shadow:0 25px 50px rgba(0,0,0,0.5);  
-}  
-  
-.product-card img{  
-width:100%;  
-height:340px;  
-object-fit:cover;  
-}  
-  
-.product-info{  
-padding:20px;  
-}  
-  
-.product-info h3{  
-font-size:18px;  
-margin-bottom:8px;  
-}  
-  
-.product-info p{  
-margin-bottom:15px;  
-color:#d0d0d0;  
-}  
-  
-.product-info button{  
-width:100%;  
-padding:14px;  
-border:none;  
-border-radius:16px;  
-font-weight:700;  
-cursor:pointer;  
-}  
-  
-/* FOOTER */  
-  
-footer{  
-padding:60px 20px;  
-background:#090909;  
-display:grid;  
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));  
-gap:30px;  
-}  
-  
-footer a{  
-display:block;  
-margin-bottom:10px;  
-color:#bdbdbd;  
-text-decoration:none;  
-}  
-  
-/* MOBILE */  
-  
-@media(max-width:768px){  
-  
-.hero-content h1{  
-font-size:38px;  
-}  
-  
-.product-card{  
-min-width:75%;  
-}  
-  
-.logo img{  
-width:55px;  
-height:55px;  
-}  
-  
-}  
-  
-</style>  </head>  <body>  <header>  <div class="nav-left">  
-<a href="#">SHOP</a>  
-<a href="#">NEW</a>  
-<a href="#">SALE</a>  
-</div>  <div class="logo">  
-<img src="IMG-20260515-WA0005.jpg">  
-</div>  <div class="icons">  
-🛒  
-</div>  </header>  <!-- HERO -->  <section class="hero">  <video autoplay muted loop playsinline>  
-<source src="https://cdn.coverr.co/videos/coverr-model-walking-in-the-city-1560923146434?download=1080p" type="video/mp4">  
-</video>  <div class="hero-content">  <h1>  
-FASHION WITH DEPTH  
-</h1>  <p>  
-Luxury streetwear, premium footwear and modern fashion pieces designed to stand out.  
-</p>  <div class="hero-buttons">  <button class="primary-btn">  
-Shop Men  
-</button>  <button class="secondary-btn">  
-Shop Women  
-</button>  </div>  </div>  </section>  <!-- CATEGORIES -->  <section class="categories">  <div class="category-card">  
-<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop">  
-<span>Menswear</span>  
-</div>  <div class="category-card">  
-<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">  
-<span>Womenswear</span>  
-</div>  <div class="category-card">  
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">  
-<span>Unisex</span>  
-</div>  <div class="category-card">  
-<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">  
-<span>Gowns</span>  
-</div>  <div class="category-card">  
-<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop">  
-<span>Streetwear</span>  
-</div>  <div class="category-card">  
-<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop">  
-<span>Accessories</span>  
-</div>  </section>  <!-- PRODUCTS -->  <h2 class="section-title">  
-New Drops  
-</h2>  <div id="products">  
-<p style="padding:20px;">Loading products...</p>  
-</div>  <footer>  <div>  
-<h4>Shop</h4>  
-<a href="#">Men</a>  
-<a href="#">Women</a>  
-<a href="#">Streetwear</a>  
-</div>  <div>  
-<h4>Company</h4>  
-<a href="#">About</a>  
-<a href="#">Contact</a>  
-</div>  <div>  
-<h4>Help</h4>  
-<a href="#">Shipping</a>  
-<a href="#">Returns</a>  
-</div>  </footer>  <script>  
-  
-async function loadProducts(){  
-  
-try{  
-  
-const response = await fetch("/api/products");  
-  
-const data = await response.json();  
-  
-const productsContainer = document.getElementById("products");  
-  
-productsContainer.innerHTML = "";  
-  
-const products = data.result || [];  
-  
-if(products.length === 0){  
-  
-productsContainer.innerHTML = "<p>No products found</p>";  
-  
-return;  
-  
-}  
-  
-products.forEach(product=>{  
-  
-const image = product.thumbnail_url || "";  
-  
-const name = product.name || "Fashion Product";  
-  
-const price = product.retail_price || "0";  
-  
-productsContainer.innerHTML += `  
-  
-<div class="product-card">  
-  
-<img src="${image}">  
-  
-<div class="product-info">  
-  
-<h3>${name}</h3>  
-  
-<p>$${price}</p>  
-  
-<button onclick="addToCart('${name}')">  
-Add To Cart  
-</button>  
-  
-</div>  
-  
-</div>  
-  
-`;  
-  
-});  
-  
-}catch(error){  
-  
-console.log(error);  
-  
-document.getElementById("products").innerHTML =  
-"<p style='padding:20px;'>Failed to load products</p>";  
-  
-}  
-  
-}  
-  
-function addToCart(product){  
-  
-alert(product + " added to cart");  
-  
-}  
-  
-loadProducts();  
-  
-</script> <div id="cartSidebar" class="cart">
-  <div class="cart-header">
-    <h2>Your Cart</h2>
-    <button onclick="toggleCart()">✕</button>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MixMart Fashion</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#0d0d0d;
+color:white;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(18px);
+background:rgba(0,0,0,0.35);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo img{
+width:70px;
+height:70px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.nav-left{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+.nav-left a{
+color:white;
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+}
+
+.icons{
+display:flex;
+gap:16px;
+font-size:20px;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.5);
+}
+
+.hero::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to top,#0d0d0d 5%,transparent);
+}
+
+.hero-content{
+position:relative;
+z-index:5;
+max-width:800px;
+padding:20px;
+}
+
+.hero-content h1{
+font-size:52px;
+font-weight:800;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:18px;
+color:#d1d1d1;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.hero-buttons button{
+padding:14px 28px;
+border:none;
+border-radius:40px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.primary-btn{
+background:white;
+color:black;
+}
+
+.secondary-btn{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+color:white;
+border:1px solid rgba(255,255,255,0.2);
+}
+
+/* CATEGORY */
+
+.categories{
+padding:90px 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:20px;
+}
+
+.category-card{
+position:relative;
+height:240px;
+border-radius:28px;
+overflow:hidden;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+
+.category-card:hover{
+transform:translateY(-8px);
+}
+
+.category-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.4s;
+}
+
+.category-card:hover img{
+transform:scale(1.08);
+}
+
+.category-card span{
+position:absolute;
+bottom:18px;
+left:18px;
+font-size:20px;
+font-weight:700;
+}
+
+/* TITLES */
+
+.section-title{
+padding:0 20px;
+font-size:34px;
+font-weight:800;
+margin-bottom:30px;
+}
+
+/* PRODUCTS */
+
+#products{
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding:0 20px 70px;
+}
+
+#products::-webkit-scrollbar{
+display:none;
+}
+
+.product-card{
+min-width:280px;
+background:#171717;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 25px 50px rgba(0,0,0,0.5);
+}
+
+.product-card img{
+width:100%;
+height:340px;
+object-fit:cover;
+}
+
+.product-info{
+padding:20px;
+}
+
+.product-info h3{
+font-size:18px;
+margin-bottom:8px;
+}
+
+.product-info p{
+margin-bottom:15px;
+color:#d0d0d0;
+}
+
+.product-info button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:16px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* CART */
+
+.cart{
+position:fixed;
+top:0;
+right:-100%;
+width:350px;
+max-width:100%;
+height:100vh;
+background:#111;
+z-index:2000;
+padding:20px;
+transition:0.4s;
+overflow-y:auto;
+box-shadow:-10px 0 40px rgba(0,0,0,0.5);
+}
+
+.cart.active{
+right:0;
+}
+
+.cart-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.cart-header button{
+background:none;
+border:none;
+color:white;
+font-size:24px;
+cursor:pointer;
+}
+
+.cart-item{
+display:flex;
+gap:15px;
+margin-bottom:20px;
+background:#1b1b1b;
+padding:10px;
+border-radius:16px;
+}
+
+.cart-item img{
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.cart-item-info{
+flex:1;
+}
+
+.cart-item-info h4{
+font-size:14px;
+margin-bottom:8px;
+}
+
+.cart-item-info p{
+font-size:13px;
+color:#ccc;
+margin-bottom:8px;
+}
+
+.cart-item-info button{
+background:red;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.cart-footer{
+margin-top:30px;
+}
+
+.checkout-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+background:white;
+color:black;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px 20px;
+background:#090909;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:30px;
+}
+
+footer a{
+display:block;
+margin-bottom:10px;
+color:#bdbdbd;
+text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:38px;
+}
+
+.product-card{
+min-width:75%;
+}
+
+.logo img{
+width:55px;
+height:55px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="nav-left">
+<a href="#">SHOP</a>
+<a href="#">NEW</a>
+<a href="#">SALE</a>
+</div>
+
+<div class="logo">
+<img src="IMG-20260515-WA0005.jpg">
+</div>
+
+<div class="icons">
+<span onclick="toggleCart()" style="cursor:pointer;">
+🛒
+</span>
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-model-walking-in-the-city-1560923146434?download=1080p" type="video/mp4">
+</video>
+
+<div class="hero-content">
+
+<h1>
+FASHION WITH DEPTH
+</h1>
+
+<p>
+Luxury streetwear, premium footwear and modern fashion pieces designed to stand out.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary-btn">
+Shop Men
+</button>
+
+<button class="secondary-btn">
+Shop Women
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop">
+<span>Menswear</span>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
+<span>Womenswear</span>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
+<span>Unisex</span>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
+<span>Gowns</span>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop">
+<span>Streetwear</span>
+</div>
+
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop">
+<span>Accessories</span>
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<h2 class="section-title">
+New Drops
+</h2>
+
+<div id="products">
+<p style="padding:20px;">Loading products...</p>
+</div>
+
+<!-- CART -->
 
 <div id="cartSidebar" class="cart">
 
@@ -423,6 +498,7 @@ loadProducts();
 <div id="cartItems"></div>
 
 <div class="cart-footer">
+
 <h3 id="cartTotal">
 Total: $0
 </h3>
@@ -430,7 +506,196 @@ Total: $0
 <button onclick="checkout()" class="checkout-btn">
 Checkout
 </button>
+
 </div>
 
-</div> </body>  
+</div>
+
+<footer>
+
+<div>
+<h4>Shop</h4>
+<a href="#">Men</a>
+<a href="#">Women</a>
+<a href="#">Streetwear</a>
+</div>
+
+<div>
+<h4>Company</h4>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+
+<div>
+<h4>Help</h4>
+<a href="#">Shipping</a>
+<a href="#">Returns</a>
+</div>
+
+</footer>
+
+<script>
+
+async function loadProducts(){
+
+try{
+
+const response = await fetch("/api/products");
+
+const data = await response.json();
+
+const productsContainer = document.getElementById("products");
+
+productsContainer.innerHTML = "";
+
+const products = data.result || [];
+
+if(products.length === 0){
+
+productsContainer.innerHTML = "<p>No products found</p>";
+
+return;
+
+}
+
+products.forEach(product=>{
+
+const image = product.thumbnail_url || "";
+
+const name = product.name || "Fashion Product";
+
+const price = product.retail_price || "0";
+
+productsContainer.innerHTML += `
+
+<div class="product-card">
+
+<img src="${image}">
+
+<div class="product-info">
+
+<h3>${name}</h3>
+
+<p>$${price}</p>
+
+<button onclick="addToCart('${name}','${price}','${image}')">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}catch(error){
+
+console.log(error);
+
+document.getElementById("products").innerHTML =
+"<p style='padding:20px;'>Failed to load products</p>";
+
+}
+
+}
+
+let cart = [];
+
+function toggleCart(){
+
+document
+.getElementById("cartSidebar")
+.classList.toggle("active");
+
+}
+
+function addToCart(name, price, image){
+
+cart.push({
+name,
+price,
+image
+});
+
+updateCart();
+
+toggleCart();
+
+}
+
+function updateCart(){
+
+const cartItems =
+document.getElementById("cartItems");
+
+const cartTotal =
+document.getElementById("cartTotal");
+
+cartItems.innerHTML = "";
+
+let total = 0;
+
+cart.forEach((item,index)=>{
+
+total += Number(item.price);
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<img src="${item.image}">
+
+<div class="cart-item-info">
+
+<h4>${item.name}</h4>
+
+<p>$${item.price}</p>
+
+<button onclick="removeItem(${index})">
+Remove
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+cartTotal.innerHTML =
+`Total: $${total}`;
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+function checkout(){
+
+if(cart.length === 0){
+
+alert("Your cart is empty");
+
+return;
+
+}
+
+alert("Checkout coming soon!");
+
+}
+
+loadProducts();
+
+</script>
+
+</body>
+
 </html>

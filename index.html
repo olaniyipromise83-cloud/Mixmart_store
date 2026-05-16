@@ -681,14 +681,26 @@ updateCart();
 function checkout(){
 
 if(cart.length === 0){
-
 alert("Your cart is empty");
-
 return;
-
 }
 
-alert("Checkout coming soon!");
+let total = 0;
+
+cart.forEach(item=>{
+total += Number(item.price);
+});
+
+alert(
+"ORDER SUMMARY\n\n" +
+"Items: " + cart.length + "\n" +
+"Total: $" + total + "\n\n" +
+"Thank you for shopping with MixMart!"
+);
+
+// clear cart after checkout
+cart = [];
+updateCart();
 
 }
 

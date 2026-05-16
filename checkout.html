@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout - MixMart</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#0d0d0d;
+color:white;
+padding:20px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.cart-item{
+display:flex;
+gap:15px;
+background:#1b1b1b;
+padding:10px;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.cart-item img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.total{
+font-size:20px;
+margin:20px 0;
+text-align:center;
+font-weight:bold;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+background:white;
+color:black;
+}
+
+.back{
+background:transparent;
+color:white;
+border:1px solid white;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Checkout</h1>
+
+<div id="orderItems"></div>
+
+<div class="total" id="total">Total: $0</div>
+
+<button onclick="payNow()">Pay Now</button>
+
+<button class="back" onclick="goBack()">Back to Shop</button>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("mixmartCart")) || [];
+let total = Number(localStorage.getItem("mixmartTotal")) || 0;
+
+const orderItems = document.getElementById("orderItems");
+
+function loadOrder(){
+
+orderItems.innerHTML = "";
+
+if(cart.length === 0){
+orderItems.innerHTML = "<p>Your cart is empty</p>";
+return;
+}
+
+cart.forEach(item=>{
+orderItems.innerHTML += `
+<div class="cart-item">
+<img src="${item.image}">
+<div>
+<h3>${item.name}</h3>
+<p>$${item.price}</p>
+</div>
+</div>
+`;
+});
+
+document.getElementById("total").innerText = "Total: $" + total;
+
+}
+
+function payNow(){
+
+// 🔥 PAYSTACK PLACEHOLDER (you will replace later)
+
+alert("Redirecting to payment gateway...");
+
+// Example redirect (replace with Paystack later)
+window.location.href = "https://paystack.com";
+
+}
+
+function goBack(){
+window.location.href = "index.html";
+}
+
+loadOrder();
+
+</script>
+
+</body>
+
+</html>

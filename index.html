@@ -691,16 +691,12 @@ cart.forEach(item=>{
 total += Number(item.price);
 });
 
-alert(
-"ORDER SUMMARY\n\n" +
-"Items: " + cart.length + "\n" +
-"Total: $" + total + "\n\n" +
-"Thank you for shopping with MixMart!"
-);
+// save cart data so payment page can use it later
+localStorage.setItem("mixmartCart", JSON.stringify(cart));
+localStorage.setItem("mixmartTotal", total);
 
-// clear cart after checkout
-cart = [];
-updateCart();
+// OPTION 1: redirect to a payment page (recommended)
+window.location.href = "checkout.html";
 
 }
 

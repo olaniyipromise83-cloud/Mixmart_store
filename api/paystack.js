@@ -1,44 +1,41 @@
 export default async function handler(req, res) {
 
-if(req.method !== "POST"){
-return res.status(405).json({
-message: "Method not allowed"
-});
-}
+  // Allow only POST request
+  if (req.method !== "POST") {
+    return res.status(200).json({
+      message: "API working"
+    });
+  }
 
-try{
+  try {
 
-const { email, amount } = req.body;
+    const { email, amount } = req.body;
 
-const response = await fetch(
-"https://api.paystack.co/transaction/initialize",
-{
-method: "POST",
+    const response = await fetch(
+      "https://api.paystack.co/transaction/initialize",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer sk_test_xxxxxxxxxxxxxxxxx`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          amount
+        })
+      }
+    );
 
-headers: {
-Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
-"Content-Type": "application/json"
-},
+    const data = await response.json();
 
-body: JSON.stringify({
-email,
-amount: amount * 100,
-currency: "USD"
-})
+    res.status(200).json(data);
 
-}
-);
+  } catch (error) {
 
-const data = await response.json();
+    res.status(500).json({
+      error: error.message
+    });
 
-res.status(200).json(data);
-
-}catch(error){
-
-res.status(500).json({
-error: error.message
-});
-
-}
+  }
 
 }

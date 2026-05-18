@@ -123,12 +123,42 @@ document.getElementById("total").innerText = "Total: $" + total;
 
 function payNow(){
 
-// 🔥 PAYSTACK PLACEHOLDER (you will replace later)
+const email = prompt("Enter your email");
 
-alert("Redirecting to payment gateway...");
+if(!email){
+return;
+}
 
-// Example redirect (replace with Paystack later)
-window.location.href = "https://paystack.com";
+let handler = PaystackPop.setup({
+
+key: "pk_test_5fb842520c9f5433532f685714a0fabc2a476f7e",
+
+email: email,
+
+amount: total * 100,
+
+currency: "USD",
+
+callback: function(response){
+
+alert("Payment Successful!");
+
+localStorage.removeItem("mixmartCart");
+localStorage.removeItem("mixmartTotal");
+
+window.location.href = "index.html";
+
+},
+
+onClose: function(){
+
+alert("Payment Cancelled");
+
+}
+
+});
+
+handler.openIframe();
 
 }
 
@@ -139,6 +169,8 @@ window.location.href = "index.html";
 loadOrder();
 
 </script>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
 
 </body>
 

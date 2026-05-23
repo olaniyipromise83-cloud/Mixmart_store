@@ -16,7 +16,15 @@ Authorization: `Bearer ${PRINTFUL_KEY}`
 
 const data = await response.json();
 
-const formattedProducts = data.result.map(product => ({
+const formattedProducts = data.result.map(product => {
+
+const basePrice =
+Number(product.sync_variants?.[0]?.retail_price || 20);
+
+const finalPrice =
+(basePrice * 1.2).toFixed(2);
+
+return {
 
 id: product.id,
 
@@ -24,13 +32,13 @@ name: product.name,
 
 thumbnail_url:
 product.thumbnail_url ||
-
 "https://via.placeholder.com/300",
 
-retail_price:
-product.variants?.[0]?.retail_price || 5000
+retail_price: finalPrice
 
-}));
+};
+
+});
 
 res.status(200).json({
 result: formattedProducts

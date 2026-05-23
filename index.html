@@ -690,8 +690,10 @@ return;
 let total = 0;
 
 cart.forEach(item=>{
-total += Number(item.price);
+total += parseFloat(item.price) || 0;
 });
+  
+alert("Total amount: " + total);
 
 const email = prompt("Enter your email");
 

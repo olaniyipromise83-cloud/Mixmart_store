@@ -6,7 +6,7 @@ const STORE_ID = "18168684";
 try {
 
 const response = await fetch(
-`https://api.printful.com/store/products?store_id=${STORE_ID}`,
+`https://api.printful.com/store/products`,
 {
 headers: {
 Authorization: `Bearer ${PRINTFUL_KEY}`
@@ -19,7 +19,7 @@ const data = await response.json();
 const formattedProducts = data.result.map(product => {
 
 const basePrice =
-Number(product.sync_variants?.[0]?.retail_price || 20);
+Number(product.sync_variants?.[0]?.retail_price || 0);
 
 const finalPrice =
 (basePrice * 1.2).toFixed(2);

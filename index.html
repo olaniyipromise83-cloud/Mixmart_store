@@ -566,7 +566,8 @@ const image = product.thumbnail_url || "";
 
 const name = product.name || "Fashion Product";
 
-const price = 5000;
+const price =
+Number(product.retail_price).toLocaleString() || "0";
 
 productsContainer.innerHTML += `
 

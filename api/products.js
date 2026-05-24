@@ -6,7 +6,7 @@ const STORE_ID = "18168684";
 try {
 
 const response = await fetch(
-`https://api.printful.com/store/products?store_id=${STORE_ID}`
+`https://api.printful.com/store/products?store_id=${STORE_ID}`,
 {
 headers: {
 Authorization: `Bearer ${PRINTFUL_KEY}`

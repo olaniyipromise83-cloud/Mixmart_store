@@ -669,8 +669,7 @@ Remove
 });
 
 cartTotal.innerHTML =
-`Total: $${total}`;
-
+`Total: ₦${total.toLocaleString()}`;
 }
 
 function removeItem(index){
@@ -693,8 +692,6 @@ let total = 0;
 cart.forEach(item=>{
 total += parseFloat(item.price) || 0;
 });
-  
-alert("Total amount: " + total);
 
 const email = prompt("Enter your email");
 

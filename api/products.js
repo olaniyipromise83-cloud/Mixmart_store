@@ -1,19 +1,33 @@
-export default async function handler(req, res) {
+export default function handler(req, res) {
 
-const PRINTFUL_KEY = "eIvy4MfNJLnV0XBOqzrC97PvTLNEhKkRFfM0l5lH";
-const STORE_ID = "18168684";
+res.status(200).json({
+result: [
 
-try {
-
-const response = await fetch(
-`https://api.printful.com/store/products?store_id=${STORE_ID}`,
 {
-headers: {
-Authorization: `Bearer ${PRINTFUL_KEY}`
-}
-}
-);
+id: 1,
+name: "Luxury Handbag",
+thumbnail_url: "https://your-image-link.jpg",
+retail_price: 24990
+},
 
+{
+id: 2,
+name: "Women's Fashion Dress",
+thumbnail_url: "https://your-image-link.jpg",
+retail_price: 34990
+},
+
+{
+id: 3,
+name: "Beauty Brush Set",
+thumbnail_url: "https://your-image-link.jpg",
+retail_price: 12990
+}
+
+]
+});
+
+}
 const data = await response.json();
 
 const formattedProducts = data.result.map(product => {

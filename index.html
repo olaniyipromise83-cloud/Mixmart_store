@@ -554,76 +554,37 @@ console.log("Supabase Connected");
   
 async function loadProducts(){
 
-try{
-
 const productsContainer =
 document.getElementById("products");
 
-productsContainer.innerHTML = "";
+productsContainer.innerHTML = "Checking Supabase...";
 
-const { data: products, error } = await supabase
+try{
+
+const { data, error } = await supabase
 .from("products")
 .select("*");
 
 if(error){
-console.log(error);
+
 productsContainer.innerHTML =
-"<p>Failed to load products</p>";
-return;
-}
-
-if(products.length === 0){
-
-productsContainer.innerHTML = "<p>No products found</p>";
+"Supabase Error: " + error.message;
 
 return;
 
 }
 
-products.forEach(product=>{
-
-const image = product.image || "";
-
-const name = product.name || "Fashion Product";
-
-const price =
-Number(product.price).toLocaleString() || "0";
-
-productsContainer.innerHTML += `
-
-<div class="product-card">
-
-<img src="${image}">
-
-<div class="product-info">
-
-<h3>${name}</h3>
-
-<p>$${price}</p>
-
-<button onclick="addToCart('${name}','${price}','${image}')">
-Add To Cart
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
+productsContainer.innerHTML =
+"Connected! Products found: " + data.length;
 
 }catch(error){
 
-console.log(error);
-
-document.getElementById("products").innerHTML =
-"<p style='padding:20px;'>Failed to load products</p>";
+productsContainer.innerHTML =
+"JS Error: " + error.message;
 
 }
 
 }
-
 let cart = [];
 
 function toggleCart(){

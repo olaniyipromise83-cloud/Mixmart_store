@@ -536,8 +536,21 @@ Checkout
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
   
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
 <script>
+const SUPABASE_URL =
+"https://cbvglepqycrxixlpolym.supabase.co";
 
+const SUPABASE_KEY =
+"sb_publishable_KtXxsfPSHT1asIh3sbMEvQ_s6_b9oRx";
+
+const supabase = window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+console.log("Supabase Connected");
 async function loadProducts(){
 
 try{

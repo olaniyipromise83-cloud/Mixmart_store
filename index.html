@@ -551,19 +551,26 @@ SUPABASE_KEY
 );
 
 console.log("Supabase Connected");
+  
 async function loadProducts(){
 
 try{
 
-const response = await fetch("/api/products");
-
-const data = await response.json();
-
-const productsContainer = document.getElementById("products");
+const productsContainer =
+document.getElementById("products");
 
 productsContainer.innerHTML = "";
 
-const products = data.result || [];
+const { data: products, error } = await supabase
+.from("products")
+.select("*");
+
+if(error){
+console.log(error);
+productsContainer.innerHTML =
+"<p>Failed to load products</p>";
+return;
+}
 
 if(products.length === 0){
 
@@ -575,12 +582,12 @@ return;
 
 products.forEach(product=>{
 
-const image = product.thumbnail_url || "";
+const image = product.image || "";
 
 const name = product.name || "Fashion Product";
 
 const price =
-Number(product.retail_price).toLocaleString() || "0";
+Number(product.price).toLocaleString() || "0";
 
 productsContainer.innerHTML += `
 
